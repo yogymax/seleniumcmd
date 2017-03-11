@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import com.demo.util.MyConstants;
 
@@ -131,8 +132,73 @@ public class PracticeForm {
 		}
 	}
 	
+	
 	public void fillPracticeForm(String fname,String lname,String gender){
 		this.enterDetails(fname,lname);
-		this.selectGender(gender);
+		this.selectGender(gender);		
 	}
-}
+	
+	
+	//sangeetha
+	private void selectExp(String exp)
+	{
+		
+		for(WebElement item:yearsOfExpRadioBtns)
+		{
+			if((item.getAttribute("value").toString()).equals(exp))
+			{
+				item.click();
+				break;
+			}
+		}
+	}
+	
+	
+	private void SelectProfession(String Prof)
+	{
+		if(Prof.toLowerCase().equals("manual"))
+		{
+			profession.get(0).click();
+		}
+		else if(Prof.toLowerCase().equals("auto"))
+		{
+			profession.get(1).click();
+		}
+	}
+	
+	public void SelectAutoTool(String toolName)
+	{
+		for(WebElement item :Tools)
+		{
+			if((item.getAttribute("value").toString()).equals(toolName))
+			{
+				item.click();
+				break;
+			}
+		}	
+	}				
+	
+	public void SelectContinent(String contName)
+	{
+		Select option=new Select(continentsComboBox);
+		option.selectByVisibleText(contName);
+	}
+	
+	public void SelectSelComd(String command)
+	{
+		Select option=new Select(seleniumCmdComboBox);
+		option.selectByVisibleText(command);
+	}
+	
+	public void FillDetails(String exp,String dateinput,String prof, String toolNm, String cont, String comm)
+	{
+		selectExp(exp);
+		date.sendKeys(dateinput);
+		SelectProfession(prof);
+		SelectAutoTool(toolNm);
+		SelectContinent(cont);
+		SelectSelComd(comm);
+	}
+	
+	}
+
