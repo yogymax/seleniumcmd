@@ -2,10 +2,13 @@ package com.demo.pageobjects;
 
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import com.demo.util.InitializeDrivers;
 import com.demo.util.MyConstants;
 
 public class PracticeForm {
@@ -27,6 +30,7 @@ public class PracticeForm {
 	
 	@FindBy(xpath="/html/body/div/div[5]/div[2]/div/div/form/fieldset/div[1]/strong[1]")
 	WebElement firstNameLbl;
+	
 	@FindBy(xpath="/html/body/div/div[5]/div[2]/div/div/form/fieldset/div[1]/input[1]")
 	WebElement firstNameInput;
 
@@ -123,7 +127,7 @@ public class PracticeForm {
 			item.click();
 			break;
 		}
-		if(gendertype.equals(MyConstants.FEMALE) && count==1){
+		else if(count==1){
 			item.click();
 			break;
 		}
@@ -151,9 +155,23 @@ public class PracticeForm {
 				break;
 			}
 		}
+		
+		scrollpage();
 	}
 	
 	
+	private void scrollpage() {
+		WebDriver driver = InitializeDrivers.getWebdriver();
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("window.scrollBy(0,250)", "");
+		try {
+			Thread.sleep(400);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	private void SelectProfession(String Prof)
 	{
 		if(Prof.toLowerCase().equals("manual"))
@@ -184,13 +202,16 @@ public class PracticeForm {
 		option.selectByVisibleText(contName);
 	}
 	
-	public void SelectSelComd(String command)
+	public void SelectSelComd(String ...command)
 	{
 		Select option=new Select(seleniumCmdComboBox);
-		option.selectByVisibleText(command);
+		for (String item : command) {
+			option.selectByVisibleText(item);
+		}
+		
 	}
 	
-	public void FillDetails(String exp,String dateinput,String prof, String toolNm, String cont, String comm)
+	public void FillDetails(String exp,String dateinput,String prof, String toolNm, String cont, String ...comm)
 	{
 		selectExp(exp);
 		date.sendKeys(dateinput);

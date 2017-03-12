@@ -11,10 +11,10 @@ public class PracticeFormTest {
  
 	
   @Test
-  public void fillPracticeFrom1() {
+  public void fillPracticeFrom() {
 	 PracticeForm practiceForm= InitializeDrivers.enterAppURL(MyBrowsers.Firefox);
 	 practiceForm.fillPracticeForm("Abcd", "Pqrs",MyConstants.FEMALE);
-	 practiceForm.FillDetails("5","12/03/2017","Auto","QTP","Africa","Wait Commands");
+	 practiceForm.FillDetails("5","12/03/2017","Auto","QTP","Africa","Wait Commands","Browser Commands");
   }
   
   

@@ -15,6 +15,7 @@ import com.demo.util.MyConstants.MyBrowsers;
  */
 public class InitializeDrivers {
 
+	static WebDriver driver =null;
 /**	
  * 
  * @param typeofBrowser
@@ -45,9 +46,15 @@ public class InitializeDrivers {
 
 	
 	public static PracticeForm enterAppURL(MyBrowsers browser) {
-		WebDriver driver = initializeDrivers(browser);
+		driver = initializeDrivers(browser);
 		driver.get(MyConstants.APPLICATION_URL);
+		driver.manage().window().maximize();
+		
 		return PageFactory.initElements(driver, PracticeForm.class);
 		
+	}
+	
+	public static WebDriver getWebdriver(){
+		return driver;
 	}
 }
