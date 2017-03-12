@@ -10,13 +10,12 @@ import com.demo.util.MyConstants.MyBrowsers;
 public class PracticeFormTest {
  
 	
-  @Test
+  @Test(enabled=false)
   public void fillPracticeFrom() {
 	 PracticeForm practiceForm= InitializeDrivers.enterAppURL(MyBrowsers.Firefox);
 	 practiceForm.fillPracticeForm("Abcd", "Pqrs",MyConstants.FEMALE);
 	 practiceForm.FillDetails("5","12/03/2017","Auto","QTP","Africa","Wait Commands","Browser Commands");
   }
-  
   
 
 
