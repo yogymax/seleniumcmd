@@ -21,6 +21,7 @@ public class FramesSample {
 	   {
 		   String att=w.getAttribute("id");
 		   driver.switchTo().frame(att);
+		   
 		   System.out.println(att);
 	   }
 	   

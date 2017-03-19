@@ -25,6 +25,7 @@ public class WindowHandler {
         	driver.switchTo().window(handle1);
         }     
         driver.switchTo().window(handle); //switchig back to parent
+        
         driver.close();        
 
 	}
