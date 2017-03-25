@@ -25,7 +25,7 @@ public class DataProviderTest {
 static int count=1;	
  
 @Test(dataProvider="credentials")
-  public void login(String username,String password) {
+  public void login(String username,String password,String expectedResult) {
 	 System.out.println("Iteration count "+count +" : "+username+" : "+password +" : ");
 	 count++;
 	 
